@@ -1,0 +1,42 @@
+{
+  "pages": [
+    "pages/order/order",
+    "pages/account/account",
+    "pages/history/history",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#8fb2c9",
+    "navigationBarTitleText": "披萨大叔",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#584717",
+    "selectedColor": "#0000ff",
+    "backgroundColor": "#f7e8aa",
+    "list": [
+      {
+        "pagePath": "pages/order/order",
+        "text": "点餐",
+        "iconPath": "/static/images/tabs/order.png",
+        "selectedIconPath": "/static/images/tabs/order-selected.png"
+      },
+      {
+        "pagePath": "pages/history/history",
+        "text": "历史订单",
+        "iconPath": "/static/images/tabs/history.png",
+        "selectedIconPath": "/static/images/tabs/history-selected.png"
+      },
+      {
+        "pagePath": "pages/account/account",
+        "text": "我",
+        "iconPath": "/static/images/tabs/home.png",
+        "selectedIconPath": "/static/images/tabs/home-selected.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

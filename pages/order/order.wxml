@@ -1,0 +1,95 @@
+<!--pages/order/order.wxml-->
+<view class="whole">
+  <view class="carousel">
+    <swiper indicator-dots="true">
+      <swiper-item>
+        <view class="swiperBox">
+          <image src="/static/images/icon/minus.png" mode="widthFix"></image>
+        </view>
+      </swiper-item>
+      <swiper-item>
+        <view class="swiperBox">
+          <image src="/static/images/icon/plus.png" mode="heightFix"></image>
+        </view>
+      </swiper-item>
+      <swiper-item>
+        <view class="swiperBox">
+          <image src="/static/images/icon/pizza.png" mode="heightFix"></image>
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
+  <view class="orderArea">
+    <view class="catagories">
+      <view class="catagory {{catagoryActiveId == item.kindId ? 'active' : ''}}" bindtap="switchKind"
+        data-kind="{{item.kindId}}" wx:for="{{menu}}" wx:key="id">
+        <text>{{item.kindName}}</text>
+      </view>
+    </view>
+    <scroll-view scroll-y="true" style="height: 100%;" scroll-into-view="kind{{toView}}" scroll-with-animation="true"
+      bindscroll="dishScroll">
+      <view wx:for="{{menu}}" wx:key="id" wx:for-item="kind" id="kind{{kind.kindId}}" class="dishAll">
+        <view class="kindName">
+          <text>{{kind.kindName}}</text>
+        </view>
+        <view class="dish" wx:for="{{kind.dishes}}" wx:key="id">
+          <view class="dishPic">
+            <image webp="true" class="pic" mode="widthFix" src="{{item['image-url']}}"></image>
+          </view>
+          <view class="dishInfo">
+            <view class="dishName">
+              <text>{{item.name}}</text>
+            </view>
+            <view class="dishSales">
+              <text>月销{{item.sales}}</text>
+              <!-- <text>{{kind.kindName}}</text> -->
+            </view>
+            <view class="dishPayment">
+              <view class="dishPrice">
+                <text>{{item.price}}</text>
+              </view>
+              <view class="dishCounter">
+                <view wx:if="{{item.numbers>0}}" data-kind-id="{{kind.kindId}}" data-dish-id="{{item.id}}"
+                  class="dishMinus" bindtap="minusDish">
+                  <image src="/static/images/icon/minus.png" mode="widthFix"></image>
+                </view>
+                <view wx:if="{{item.numbers>0}}" class="dishServes">
+                  <text>{{item.numbers}}</text>
+                </view>
+                <view class="dishPlus" data-kind-id="{{kind.kindId}}" data-dish-id="{{item.id}}" bindtap="addDish">
+                  <image src="/static/images/icon/plus.png" mode="widthFix"></image>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <view class="checkout">
+    <!-- <view wx:if="{{displayCheckoutDetail}}" class="checkoutDetail">
+      <view class="titleBar">
+      <text>titlebar</text></view>
+      <view class="orderedList">
+      <text>orderedlist</text></view>
+    </view> -->
+    <view class="checkoutBasic">
+      <view class="shoppingCart">
+        <view class="cartIcon">
+          <image mode="widthFix" src="/static/images/icon/pizza.png"></image>
+        </view>
+        <view class="cartRedDot">
+          <text>{{totalAmount}}</text>
+        </view>
+      </view>
+      <view class="totalPrice">
+        <text>总计 {{totalPrice}} 元</text>
+      </view>
+      <view class="goToPay">
+        <view class="payButton">
+          去结算
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
