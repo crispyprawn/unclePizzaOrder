@@ -228,19 +228,16 @@ Page({
     ],
     totalPrice: 0,
     totalAmount: 0,
-    displayCheckoutDetail: false,
     toView: "",
-    scrollPosition: 0,
     kindPositions: [],
     catagoryActiveId: 1,
-    currentScreenPixels: 0
+    currentScreenPixels: 0,
+    showCartDetail: false
   },
   switchKind(e) {
-    console.log(e.currentTarget)
     this.setData({
       toView: e.currentTarget.dataset.kind
     })
-    // e.currentTarget.style.backgroundColor = "#FEDFE1"
   },
   dishScroll(e) {
     let currentTop = e.detail.scrollTop
@@ -260,13 +257,48 @@ Page({
     this.setData({ totalAmount: this.data.totalAmount + 1 })
     this.setData({ totalPrice: this.data.totalPrice + dish.price })
   },
-
   minusDish(e) {
     let dish = this.data.menu.find((item) => item.kindId === e.currentTarget.dataset.kindId).dishes.find((item) => item.id === e.currentTarget.dataset.dishId)
     dish.numbers--
     this.setData({ menu: this.data.menu })
     this.setData({ totalAmount: this.data.totalAmount - 1 })
     this.setData({ totalPrice: this.data.totalPrice - dish.price })
+  },
+  showDetail(e) {
+    if (this.data.totalAmount > 0) {
+      this.setData({
+        showCartDetail: !this.data.showCartDetail
+      })
+    }
+  },
+  foldDetail(e) {
+    this.setData({
+      showCartDetail: false
+    })
+  },
+  clearAll(e) {
+    this.data.menu.forEach(kind => {
+      kind['dishes'].forEach(dish => dish.numbers = 0)
+    })
+    this.setData({
+      menu: this.data.menu,
+      totalAmount: 0,
+      totalPrice: 0
+    })
+  },
+  goToPay(e) {
+    let a = this.data.menu
+      .map((kind) => {
+        return {
+          kindName: kind.kindName,
+          kindId: kind.kindId,
+          dishes: kind.dishes.filter((dish) => dish.numbers > 0)
+        }
+      })
+      .filter((kind) => Object.keys(kind.dishes).length !== 0)
+    wx.navigateTo({
+      url: `/pages/payment/payment?menu=${JSON.stringify(a)}`,
+    })
   },
 
   /**

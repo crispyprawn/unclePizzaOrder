@@ -1,79 +1,12 @@
-/* pages/order/order.wxss */
 page {
   height: 100%;
 }
-
 .whole {
   display: flex;
   flex-direction: column;
   height: 100%;
   overflow: hidden;
 }
-
-.kindName {
-  height: 100rpx;
-  /* background-color: burlywood; */
-  display: flex;
-  align-items: center;
-  font-size: 40rpx;
-  padding: 0rpx 20rpx 0rpx 20rpx;
-}
-
-.dish {
-  display: flex;
-  width: 550rpx;
-  height: 240rpx;
-  font-size: 36rpx;
-}
-
-.dishPic {
-  display: flex;
-  width: 200rpx;
-  box-sizing: border-box;
-  padding: 10rpx 10rpx 0rpx 10rpx;
-}
-
-.dishInfo {
-  width: 320rpx;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  padding: 0rpx 10rpx 0rpx 10rpx;
-}
-
-.dishName {
-  flex: 2;
-}
-
-.dishSales {
-  font-size: 30rpx;
-  flex: 4;
-}
-
-.dishPayment {
-  flex: 3;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.dishCounter {
-  display: flex;
-}
-
-.dishMinus,
-.dishPlus,
-.dishServes {
-  display: flex;
-  width: 40rpx;
-  justify-content: center;
-  align-items: center;
-}
-
-.pic {
-  border-radius: 10rpx;
-}
-
 .carousel {
   display: flex;
   width: 750rpx;
@@ -81,71 +14,207 @@ page {
   background-color: thistle;
   flex: 0 0 auto;
 }
-
-swiper {
+.carousel swiper {
   width: 100%;
   height: 100%;
 }
-
-.swiperBox {
+.carousel .swiperBox {
   display: flex;
   width: 300rpx;
 }
-
-.catagories {
-  display: flex;
-  width: 200rpx;
-  flex-direction: column;
-  background-color: rgb(169, 231, 233);
-  font-size: 30rpx;
-}
-
-.catagories .active {
-  background-color: white;
-}
-
-.catagory {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 200rpx;
-  height: 80rpx;
-}
-
-
 .orderArea {
   display: flex;
   flex-direction: row;
   flex: 1 1 auto;
   overflow: auto;
 }
-
+.orderArea .catagories {
+  display: flex;
+  width: 200rpx;
+  flex-direction: column;
+  background-color: #a9e7e9;
+  font-size: 30rpx;
+}
+.orderArea .catagories .catagory.active {
+  background-color: white;
+  border-left: #9abdff solid 10rpx;
+  border-right: transparent solid 10rpx;
+  box-sizing: border-box;
+}
+.orderArea .catagories .catagory {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200rpx;
+  height: 80rpx;
+}
+.dishAll .kindName {
+  height: 100rpx;
+  /* background-color: burlywood; */
+  display: flex;
+  align-items: center;
+  font-size: 40rpx;
+  padding: 0rpx 20rpx 0rpx 20rpx;
+}
+.dishAll .dish {
+  display: flex;
+  width: 550rpx;
+  height: 240rpx;
+  font-size: 36rpx;
+}
+.dishAll .dishPic {
+  display: flex;
+  width: 200rpx;
+  box-sizing: border-box;
+  padding: 10rpx 10rpx 0rpx 20rpx;
+}
+.dishAll .dishPic .pic {
+  border-radius: 10rpx;
+}
+.dishAll .dishInfo {
+  width: 330rpx;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 0rpx 10rpx 0rpx 10rpx;
+}
+.dishAll .dishInfo .dishName {
+  flex: 2;
+}
+.dishAll .dishInfo .dishSales {
+  font-size: 30rpx;
+  flex: 4;
+}
+.dishAll .dishInfo .dishPayment {
+  flex: 3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dishAll .dishInfo .dishPayment .dishCounter {
+  display: flex;
+}
+.dishAll .dishInfo .dishPayment .dishCounter .dishMinus,
+.dishAll .dishInfo .dishPayment .dishCounter .dishPlus,
+.dishAll .dishInfo .dishPayment .dishCounter .dishServes {
+  display: flex;
+  width: 40rpx;
+  justify-content: center;
+  align-items: center;
+}
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 5;
+  background: rgba(0, 0, 0, 0.5);
+}
 .checkout {
   display: flex;
   height: 100rpx;
   flex: 0 0 auto;
 }
-
-.checkoutBasic {
+.checkout .cartDetail {
+  position: fixed;
+  bottom: 100rpx;
+  width: 100vw;
+  z-index: 6;
+  background-color: whitesmoke;
+  transition: 0.3s cubic-bezier(0.07, 0.92, 0.4, 0.97);
+  transform: translate(0, 100%);
+  /* overflow: auto; */
+}
+.checkout .cartDetail .titleBar {
+  font-size: 40rpx;
+  padding: 20rpx 20rpx 10rpx 20rpx;
+  height: 60rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.checkout .cartDetail .titleBar .clearAll {
+  display: flex;
+}
+.checkout .cartDetail .titleBar .clearAll .detailClear {
+  display: flex;
+  width: 40rpx;
+  align-items: center;
+  padding: 5rpx 0rpx 0rpx 0rpx;
+}
+.checkout .cartDetail .orderedList {
+  max-height: 50vh;
+  overflow: auto;
+}
+.checkout .cartDetail .orderedList .detailDish {
+  display: flex;
+  width: 750rpx;
+  height: 180rpx;
+  font-size: 36rpx;
+  padding: 0rpx 10rpx 0rpx 10rpx;
+  box-sizing: border-box;
+}
+.checkout .cartDetail .orderedList .detailDish .detailDishPic {
+  display: flex;
+  width: 150rpx;
+  box-sizing: border-box;
+  padding: 10rpx 10rpx 0rpx 10rpx;
+}
+.checkout .cartDetail .orderedList .detailDish .detailDishPic .pic {
+  border-radius: 10rpx;
+}
+.checkout .cartDetail .orderedList .detailDish .detailDishInfo {
+  width: 550rpx;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 0rpx 10rpx 0rpx 10rpx;
+}
+.checkout .cartDetail .orderedList .detailDish .detailDishInfo .detailDishName {
+  flex: 2;
+}
+.checkout .cartDetail .orderedList .detailDish .detailDishInfo .detailDishPayment {
+  flex: 3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.checkout .cartDetail .orderedList .detailDish .detailDishInfo .detailDishPayment .detailDishCounter {
+  display: flex;
+}
+.checkout .cartDetail .orderedList .detailDish .detailDishInfo .detailDishPayment .detailDishCounter .detailDishMinus,
+.checkout .cartDetail .orderedList .detailDish .detailDishInfo .detailDishPayment .detailDishCounter .detailDishPlus,
+.checkout .cartDetail .orderedList .detailDish .detailDishInfo .detailDishPayment .detailDishCounter .detailDishServes {
+  display: flex;
+  width: 40rpx;
+  justify-content: center;
+  align-items: center;
+}
+.checkout .cartDetail.show {
+  transform: translate(0, 0);
+  transition: 0.2s cubic-bezier(0.07, 0.92, 0.4, 0.97);
+}
+.checkout .checkoutBasic {
   display: flex;
   align-items: center;
   width: 100%;
+  z-index: 8;
+  background-color: white;
 }
-
-.shoppingCart {
+.checkout .checkoutBasic .shoppingCart {
   flex: 1;
   display: flex;
   position: relative;
   width: 200rpx;
 }
-
-.cartIcon {
+.checkout .checkoutBasic .shoppingCart .cartIcon {
   display: flex;
   width: 200rpx;
   transform: translate(-15rpx, -10rpx) scale(0.85);
 }
-
-.cartRedDot {
+.checkout .checkoutBasic .shoppingCart .cartRedDot {
   display: flex;
   height: 50rpx;
   min-width: 50rpx;
@@ -157,23 +226,22 @@ swiper {
   color: white;
   transform: translate(-65rpx, 30rpx);
 }
-
-.totalPrice {
+.checkout .checkoutBasic .totalPrice {
   flex: 2;
 }
-
-.goToPay {
+.checkout .checkoutBasic .goToPay {
   flex: 1;
   padding: 10rpx;
   height: 80rpx;
 }
-
-.payButton {
+.checkout .checkoutBasic .goToPay .payButton {
   width: 100%;
   height: 100%;
-  background-color: rgb(110, 159, 250);
+  background-color: #6e9ffa;
   color: white;
   text-align: center;
   line-height: 80rpx;
+  font-size: 36rpx;
   border-radius: 40rpx;
+  transition: 0.4s cubic-bezier(0, 1.02, 0.43, 0.96);
 }

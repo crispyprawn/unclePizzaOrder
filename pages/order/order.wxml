@@ -50,7 +50,7 @@
               </view>
               <view class="dishCounter">
                 <view wx:if="{{item.numbers>0}}" data-kind-id="{{kind.kindId}}" data-dish-id="{{item.id}}"
-                  class="dishMinus" bindtap="minusDish">
+                  class="dishMinus {{item.numbers>0?'show':''}}" bindtap="minusDish">
                   <image src="/static/images/icon/minus.png" mode="widthFix"></image>
                 </view>
                 <view wx:if="{{item.numbers>0}}" class="dishServes">
@@ -66,19 +66,62 @@
       </view>
     </scroll-view>
   </view>
+  <view class="mask" hidden="{{!showCartDetail||totalAmount<=0}}" catchtap="foldDetail">
+  </view>
   <view class="checkout">
-    <!-- <view wx:if="{{displayCheckoutDetail}}" class="checkoutDetail">
+    <view class="cartDetail {{showCartDetail&&totalAmount>0?'show':''}}">
       <view class="titleBar">
-      <text>titlebar</text></view>
-      <view class="orderedList">
-      <text>orderedlist</text></view>
-    </view> -->
-    <view class="checkoutBasic">
-      <view class="shoppingCart">
-        <view class="cartIcon">
-          <image mode="widthFix" src="/static/images/icon/pizza.png"></image>
+        <view>
+          <text>已选菜品</text>
         </view>
-        <view class="cartRedDot">
+        <view class="clearAll" bindtap="clearAll">
+          <view class="detailClear">
+            <image src="/static/images/icon/clear.png" mode="widthFix"></image>
+
+          </view>
+          <text>清空</text>
+        </view>
+      </view>
+      <view class="orderedList">
+        <view wx:for="{{menu}}" wx:key="id" wx:for-item="kind" id="kind{{kind.kindId}}" class="detailDishAll">
+          <view class="detailDish" wx:if="{{item.numbers>0}}" wx:for="{{kind.dishes}}" wx:key="id">
+            <view class="detailDishPic">
+              <image webp="true" class="pic" mode="widthFix" src="{{item['image-url']}}"></image>
+            </view>
+            <view class="detailDishInfo">
+              <view class="dishName">
+                <text>{{item.name}} × {{item.numbers}}</text>
+              </view>
+              <view class="detailDishPayment">
+                <view class="detailDishPrice">
+                  <text>{{item.price*item.numbers}}</text>
+                </view>
+                <view class="detailDishCounter">
+                  <view wx:if="{{item.numbers>0}}" data-kind-id="{{kind.kindId}}" data-dish-id="{{item.id}}"
+                    class="detailDishMinus" bindtap="minusDish">
+                    <image src="/static/images/icon/minus.png" mode="widthFix"></image>
+                  </view>
+                  <view wx:if="{{item.numbers>0}}" class="detailDishServes">
+                    <text>{{item.numbers}}</text>
+                  </view>
+                  <view class="detailDishPlus" data-kind-id="{{kind.kindId}}" data-dish-id="{{item.id}}"
+                    bindtap="addDish">
+                    <image src="/static/images/icon/plus.png" mode="widthFix"></image>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="checkoutBasic">
+      <view class="shoppingCart" bindtap="showDetail">
+        <view class="cartIcon">
+          <image hidden="{{totalAmount<=0}}" mode="widthFix" src="/static/images/icon/pizza.png"></image>
+          <image hidden="{{totalAmount>0}}" mode="widthFix" src="/static/images/icon/pizzaNone.png"></image>
+        </view>
+        <view class="cartRedDot" wx:if="{{totalAmount>0}}">
           <text>{{totalAmount}}</text>
         </view>
       </view>
@@ -86,7 +129,7 @@
         <text>总计 {{totalPrice}} 元</text>
       </view>
       <view class="goToPay">
-        <view class="payButton">
+        <view class="payButton" style="background-color:{{totalAmount<=0? 'lightgrey':''}}" bindtap="goToPay">
           去结算
         </view>
       </view>

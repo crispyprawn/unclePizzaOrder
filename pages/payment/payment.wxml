@@ -1,0 +1,39 @@
+<!--pages/payment/payment.wxml-->
+<view class="whole">
+  <view class="titleBar">
+    您的餐品
+  </view>
+  <view class="orderedList">
+    <view wx:for="{{menu}}" wx:key="id" wx:for-item="kind" id="kind{{kind.kindId}}" class="detailDishAll">
+      <view class="detailDish" wx:for="{{kind.dishes}}" wx:key="id">
+        <view class="detailDishPic">
+          <image webp="true" class="pic" mode="widthFix" src="{{item['image-url']}}"></image>
+        </view>
+        <view class="detailDishInfo">
+          <view class="dishName">
+            <text>{{item.name}}</text>
+          </view>
+          <view class="detailDishPayment">
+            <view class="detailDishNumbers">
+              <text>×{{item.numbers}}</text>
+            </view>
+            <view class="detailDishPrice">
+              <text>￥{{item.price*item.numbers}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="nextStep" hidden="{{confirmed}}">
+    <view class="returnOrder" bindtap="returnToOrder">
+      <view>继续点单</view>
+    </view>
+    <view class="submitOrder" bindtap="goToSubmit">
+      <view>确定提交</view>
+    </view>
+  </view>
+  <view class="success" hidden="{{!confirmed}}">
+  厨房正在火热制作中。。。
+  </view>
+</view>

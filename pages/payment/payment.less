@@ -1,0 +1,88 @@
+.titleBar {
+  height: 200rpx;
+  padding: 0rpx 0rpx 0rpx 20rpx;
+  display: flex;
+  font-size: 50rpx;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.orderedList {
+
+  .detailDish {
+    display: flex;
+    width: 750rpx;
+    height: 180rpx;
+    font-size: 36rpx;
+    padding: 0rpx 10rpx 0rpx 10rpx;
+    box-sizing: border-box;
+
+
+    .detailDishPic {
+      display: flex;
+      width: 150rpx;
+      box-sizing: border-box;
+      padding: 10rpx 10rpx 0rpx 10rpx;
+
+      .pic {
+        border-radius: 10rpx;
+      }
+    }
+
+    .detailDishInfo {
+      width: 550rpx;
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      padding: 0rpx 10rpx 0rpx 10rpx;
+
+      .detailDishName {
+        flex: 2;
+      }
+
+      .detailDishPayment {
+        flex: 3;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .detailDishNumbers,
+        .detailDishPrice {
+          display: flex;
+          width: 40rpx;
+          justify-content: center;
+          align-items: center;
+        }
+
+      }
+    }
+  }
+}
+
+.nextStep {
+  display: flex;
+  justify-content: space-around;
+  font-size: 50rpx;
+  padding: 20rpx;
+
+  .returnOrder {
+    background-color: rgb(203, 226, 255);
+    color: rgb(80, 80, 80);
+    border-radius: 10rpx;
+    padding: 30rpx;
+  }
+
+  .submitOrder {
+    background-color: rgb(92, 92, 255);
+    color: rgb(236, 236, 236);
+    border-radius: 10rpx;
+    padding: 30rpx;
+  }
+}
+
+.success {
+  display: flex;
+  padding: 20rpx;
+  font-size: 40rpx;
+  justify-content: center;
+}

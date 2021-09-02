@@ -4,7 +4,8 @@
     "pages/account/account",
     "pages/history/history",
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/payment/payment"
   ],
   "window": {
     "backgroundTextStyle": "light",
