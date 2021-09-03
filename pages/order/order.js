@@ -287,20 +287,34 @@ Page({
     })
   },
   goToPay(e) {
-    let a = this.data.menu
+    if (this.data.totalAmount <= 0) return
+    let totalAmount = this.data.totalAmount
+    let totalPrice = this.data.totalPrice
+    let order = this.data.menu
       .map((kind) => {
         return {
           kindName: kind.kindName,
           kindId: kind.kindId,
-          dishes: kind.dishes.filter((dish) => dish.numbers > 0)
+          dishes: kind.dishes.filter((dish) => dish.numbers > 0),
         }
       })
       .filter((kind) => Object.keys(kind.dishes).length !== 0)
     wx.navigateTo({
-      url: `/pages/payment/payment?menu=${JSON.stringify(a)}`,
+      url: '/pages/payment/payment',
+      events: {
+        initialize: () => {
+          this.clearAll()
+        },
+      },
+      success(res) {
+        res.eventChannel.emit('acceptDataFromOpenerPage', {
+          order: order,
+          totalAmount: totalAmount,
+          totalPrice: totalPrice
+        })
+      }
     })
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -338,7 +352,6 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
   },
 
   /**

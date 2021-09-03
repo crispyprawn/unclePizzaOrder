@@ -18,14 +18,36 @@ Page({
     this.setData({
       confirmed: true
     })
+    this.getOpenerEventChannel().emit("initialize")
+    let history = wx.getStorageSync('history')
+    // console.log(history.length)
+    if (history.length === 0) {
+      history = new Array()
+    }
+    history.push({
+      time: Date.now(),
+      fulfilled: false,
+      commented: false,
+      detail: this.data.menu,
+      totalAmount: this.data.totalAmount,
+      totalPrice: this.data.totalPrice
+    })
+    wx.setStorage({
+      key: 'history',
+      data: history
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
-    this.setData({
-      menu: JSON.parse(options.menu)
+    let channel = this.getOpenerEventChannel()
+    channel.on('acceptDataFromOpenerPage', (data) => {
+      this.setData({
+        menu: data.order,
+        totalPrice: data.totalPrice,
+        totalAmount: data.totalAmount
+      })
     })
   },
 
@@ -33,7 +55,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    console.log(this.data.menu);
   },
 
   /**

@@ -34,6 +34,11 @@
     </view>
   </view>
   <view class="success" hidden="{{!confirmed}}">
-  厨房正在火热制作中。。。
+    厨房正在火热制作中。。。
+  </view>
+  <view class="successNextStep" hidden="{{!confirmed}}">
+    <view class="returnButton" bindtap="returnToOrder">
+      回到首页
+    </view>
   </view>
 </view>

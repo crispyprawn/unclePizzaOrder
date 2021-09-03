@@ -1,8 +1,33 @@
-<view class='mobile'>
-	<text>手机：</text>
-	<view>
-		<input type='number' maxlength='11' bindinput='inputtel' value="{{tel}}" bindblur='blurtel'
-			bindfocus='focustel'></input>
-		<i class="fa fa-close" catchtap="cleartel" hidden="true" style="display:flex;"></i>
-	</view>
+<view>
+  <view class="titleBar">
+    <view class="orderState {{activeState==='all'?'active':''}}" bindtap="toAll">全部</view>
+    <view class="orderState {{activeState==='unpaid'?'active':''}}" bindtap="toUnpaid">待支付</view>
+    <view class="orderState {{activeState==='uncommented'?'active':''}}" bindtap="toUncommented">待评价</view>
+    <view class="orderState {{activeState==='fulfilled'?'active':''}}" bindtap="toFulfilled">已完成</view>
+  </view>
+  <view class="historyOrders">
+    <view wx:for="{{historyOrders}}" class="singleOrder">
+      <view class="orderTime">
+        {{item.time.year}}
+        {{item.time.month}}
+        {{item.time.date}}
+        {{item.time.hour}}
+        {{item.time.minute}}
+        {{item.time.second}}
+      </view>
+      <view class="orderFulfilled">
+        {{item.fulfilled}}
+      </view>
+      <view class="orderCommented">
+        {{item.commented}}
+      </view>
+      <view class="orderDetail">
+        {{item.totalAmount}}
+        {{item.totalPrice}}
+        <!-- <view class="orderMenu" wx:for="{{item.detail}}" wx:for-item="kind">
+          {{kind}}
+        </view> -->
+      </view>
+    </view>
+  </view>
 </view>

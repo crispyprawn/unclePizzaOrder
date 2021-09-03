@@ -1,0 +1,21 @@
+.titleBar {
+  height: 100rpx;
+  padding: 0rpx 20rpx 0rpx 20rpx;
+  display: flex;
+  font-size: 40rpx;
+  justify-content: center;
+  align-items: center;
+
+  .orderState {
+    height: 100%;
+    width: 180rpx;
+    text-align: center;
+    border-top: 20rpx solid transparent;
+    padding: 0rpx 20rpx 0rpx 20rpx;
+    box-sizing: border-box;
+  }
+
+  .orderState.active {
+    border-top: 20rpx solid rgb(140, 228, 255);
+  }
+}
