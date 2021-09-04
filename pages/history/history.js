@@ -1,20 +1,11 @@
 // pages/history/history.js
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
     activeState: 'all',
     hidden: true,
-    testData: [
-      {
-        number: 1,
-      },
-      {
-        number: 0
-      }
-    ]
   },
 
   toAll(e) {
@@ -25,44 +16,47 @@ Page({
 
   toUnpaid(e) {
     this.setData({
-      activeState: 'unpaid',
-      hidden: false
+      activeState: 'unpaid'
     })
   },
   toCooking(e) {
     this.setData({
-      activeState: 'cooking',
-      hidden: true
+      activeState: 'cooking'
     })
   },
   toFinished(e) {
     this.setData({
       activeState: 'finished'
     })
-    console.log(this.data.hidden)
+  },
+
+  cooked(e) {
+    this.data.historyOrders.forEach((order) => {
+      if (order.time === e.currentTarget.dataset.id)
+        order.state = 'unpaid'
+    })
+    this.setData({
+      historyOrders: this.data.historyOrders
+    })
+    wx.setStorageSync('history', this.data.historyOrders)
+
+  },
+  paid(e) {
+    this.data.historyOrders.forEach((order) => {
+      if (order.time === e.currentTarget.dataset.id)
+        order.state = 'finished'
+    })
+    this.setData({
+      historyOrders: this.data.historyOrders
+    })
+    wx.setStorageSync('history', this.data.historyOrders)
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let raw = wx.getStorageSync('history')
-    console.log(raw)
-    raw.forEach(order => {
-      let orderTime = new Date(order.time)
-      order.time = {
-        year: orderTime.getFullYear(),
-        month: orderTime.getMonth(),
-        date: orderTime.getDate(),
-        hour: orderTime.getHours(),
-        minute: orderTime.getMinutes(),
-        second: orderTime.getSeconds()
-      }
-    })
-    this.setData({
-      historyOrders: raw
-    })
-    console.log(this.data.historyOrders)
+
   },
 
   /**
@@ -76,7 +70,34 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      historyOrders: wx.getStorageSync('history')
+    })
+    console.log(wx.getStorageSync('history'))
+    let displayLists = this.data.historyOrders.map((order) => {
+      let displayList = new Array()
+      let limit = 4
+      let exceed = false
+      order.detail.forEach((kind) => {
+        kind.dishes.forEach((dish) => {
+          if (limit > 0) {
+            displayList.push(dish)
+            limit--
+          }
+          else if (limit === 0) {
+            exceed = true
+          }
+        })
+      })
+      console.log(exceed)
+      order.displayList = displayList
+      order.exceed = exceed
+      return order
+    })
+    this.setData({
+      displayLists: displayLists
+    })
+    console.log(this.data.displayLists)
   },
 
   /**

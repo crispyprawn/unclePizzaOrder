@@ -48,7 +48,7 @@ page {
   width: 200rpx;
   height: 80rpx;
 }
-.dishAll .kindName {
+.kindName {
   height: 100rpx;
   /* background-color: burlywood; */
   display: flex;
@@ -56,47 +56,47 @@ page {
   font-size: 40rpx;
   padding: 0rpx 20rpx 0rpx 20rpx;
 }
-.dishAll .dish {
+.dish {
   display: flex;
   width: 550rpx;
   height: 240rpx;
   font-size: 36rpx;
 }
-.dishPic {
+.dish .dishPic {
   display: flex;
   width: 200rpx;
   box-sizing: border-box;
   padding: 10rpx 10rpx 0rpx 20rpx;
 }
-.dishPic .pic {
+.dish .dishPic .pic {
   border-radius: 10rpx;
 }
-.dishInfo {
+.dish .dishInfo {
   width: 330rpx;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   padding: 0rpx 10rpx 0rpx 10rpx;
 }
-.dishInfo .dishName {
+.dish .dishInfo .dishName {
   flex: 2;
 }
-.dishInfo .dishSales {
+.dish .dishInfo .dishSales {
   font-size: 30rpx;
   flex: 4;
 }
-.dishInfo .dishPayment {
+.dishPayment {
   flex: 3;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.dishInfo .dishPayment .dishCounter {
+.dishPayment .dishCounter {
   display: flex;
 }
-.dishInfo .dishPayment .dishCounter .dishMinus,
-.dishInfo .dishPayment .dishCounter .dishPlus,
-.dishInfo .dishPayment .dishCounter .dishServes {
+.dishPayment .dishCounter .dishMinus,
+.dishPayment .dishCounter .dishPlus,
+.dishPayment .dishCounter .dishServes {
   display: flex;
   width: 40rpx;
   justify-content: center;

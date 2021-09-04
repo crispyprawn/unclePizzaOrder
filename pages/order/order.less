@@ -61,68 +61,69 @@ page {
   }
 }
 
-.dishAll {
-  .kindName {
-    height: 100rpx;
-    /* background-color: burlywood; */
+
+.kindName {
+  height: 100rpx;
+  /* background-color: burlywood; */
+  display: flex;
+  align-items: center;
+  font-size: 40rpx;
+  padding: 0rpx 20rpx 0rpx 20rpx;
+}
+
+.dish {
+  display: flex;
+  width: 550rpx;
+  height: 240rpx;
+  font-size: 36rpx;
+
+  .dishPic {
     display: flex;
-    align-items: center;
-    font-size: 40rpx;
-    padding: 0rpx 20rpx 0rpx 20rpx;
+    width: 200rpx;
+    box-sizing: border-box;
+    padding: 10rpx 10rpx 0rpx 20rpx;
+
+    .pic {
+      border-radius: 10rpx;
+    }
   }
 
-  .dish {
+  .dishInfo {
+    width: 330rpx;
     display: flex;
-    width: 550rpx;
-    height: 240rpx;
-    font-size: 36rpx;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 0rpx 10rpx 0rpx 10rpx;
+
+    .dishName {
+      flex: 2;
+    }
+
+    .dishSales {
+      font-size: 30rpx;
+      flex: 4;
+    }
+
+
   }
 }
 
-.dishPic {
+.dishPayment {
+  flex: 3;
   display: flex;
-  width: 200rpx;
-  box-sizing: border-box;
-  padding: 10rpx 10rpx 0rpx 20rpx;
+  justify-content: space-between;
+  align-items: center;
 
-  .pic {
-    border-radius: 10rpx;
-  }
-}
-
-.dishInfo {
-  width: 330rpx;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  padding: 0rpx 10rpx 0rpx 10rpx;
-
-  .dishName {
-    flex: 2;
-  }
-
-  .dishSales {
-    font-size: 30rpx;
-    flex: 4;
-  }
-
-  .dishPayment {
-    flex: 3;
+  .dishCounter {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
 
-    .dishCounter {
+    .dishMinus,
+    .dishPlus,
+    .dishServes {
       display: flex;
-
-      .dishMinus,
-      .dishPlus,
-      .dishServes {
-        display: flex;
-        width: 40rpx;
-        justify-content: center;
-        align-items: center;
-      }
+      width: 40rpx;
+      justify-content: center;
+      align-items: center;
     }
   }
 }

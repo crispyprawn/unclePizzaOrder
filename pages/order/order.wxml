@@ -28,7 +28,7 @@
     </view>
     <scroll-view scroll-y="true" style="height: 100%;" scroll-into-view="kind{{toView}}" scroll-with-animation="true"
       bindscroll="dishScroll">
-      <view wx:for="{{menu}}" wx:key="id" wx:for-item="kind" id="kind{{kind.kindId}}" class="dishAll">
+      <view wx:for="{{menu}}" wx:key="id" wx:for-item="kind" id="kind{{kind.kindId}}">
         <view class="kindName">
           <text>{{kind.kindName}}</text>
         </view>

@@ -1,3 +1,5 @@
+import dayjs from "dayjs"
+
 // pages/payment/payment.js
 Page({
 
@@ -20,16 +22,12 @@ Page({
     })
     this.getOpenerEventChannel().emit("initialize")
     let history = wx.getStorageSync('history')
-    if (history.length === 0) {
-      history = new Array()
-    }
     history.push({
-      time: Date.now(),
-      finished: false,
-      cooking: true,
+      time: dayjs().format('YYMMDDHHmmss'),
+      state: 'cooking',
       detail: this.data.menu,
       totalAmount: this.data.totalAmount,
-      totalPrice: this.data.totalPrice
+      totalPrice: this.data.totalPrice,
     })
     wx.setStorage({
       key: 'history',

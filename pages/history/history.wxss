@@ -1,3 +1,11 @@
+page {
+  height: 100%;
+}
+.whole {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 .titleBar {
   height: 100rpx;
   padding: 0rpx 20rpx 0rpx 20rpx;
@@ -5,6 +13,7 @@
   font-size: 40rpx;
   justify-content: center;
   align-items: center;
+  flex-shrink: 0;
 }
 .titleBar .orderState {
   height: 100%;
@@ -17,13 +26,81 @@
 .titleBar .orderState.active {
   border-top: 20rpx solid #8ce4ff;
 }
+.historyOrders {
+  flex-shrink: 1;
+  overflow: auto;
+}
 .singleOrder {
   display: flex;
-  height: 150rpx;
+  flex-direction: column;
   padding: 20rpx;
   justify-content: space-between;
   background-color: #e4e4ff;
 }
-#test .test1 {
+.singleOrder .orderTime {
+  font-size: 30rpx;
+}
+.singleOrder .orderDetail {
+  text-align: right;
   display: flex;
+  justify-content: space-between;
+}
+.singleOrder .orderDetail .price {
+  font-size: 40rpx;
+}
+.singleOrder .orderDetail .price text {
+  font-size: 30rpx;
+}
+.singleOrder .orderDetail .amount {
+  font-size: 34rpx;
+  color: #7c7c7c;
+}
+.singleOrder .nextStep {
+  display: flex;
+  justify-content: flex-end;
+}
+.singleOrder .nextStep .orderFinished {
+  background-color: aquamarine;
+  height: 100%;
+}
+.singleOrder .nextStep .orderUnpaid {
+  background-color: #fffcd2;
+}
+.singleOrder .nextStep .orderPaid {
+  background-color: #ffa277;
+}
+.monoPic {
+  display: flex;
+  align-items: flex-start;
+  font-size: 45rpx;
+}
+.monoPic view {
+  padding: 20rpx 0rpx 0rpx 10rpx;
+}
+.monoPic view image {
+  border-radius: 10rpx;
+  width: 140rpx;
+  margin: auto;
+}
+.multiPic {
+  display: flex;
+  align-items: flex-start;
+  font-size: 45rpx;
+}
+.multiPic .dish {
+  padding-right: 15rpx;
+  width: 130rpx;
+}
+.multiPic .dish image {
+  border-radius: 10rpx;
+  width: 100%;
+  margin: auto;
+}
+.multiPic .dish .dishName {
+  width: 100%;
+  font-size: 25rpx;
+  text-align: center;
+}
+.multiPic .abbr {
+  align-self: center;
 }

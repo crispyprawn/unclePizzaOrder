@@ -25,6 +25,9 @@
       </view>
     </view>
   </view>
+  <view class="success" hidden="{{confirmed}}">
+    您还有什么要点的吗？
+  </view>
   <view class="nextStep" hidden="{{confirmed}}">
     <view class="returnOrder" bindtap="returnToOrder">
       <view>继续点单</view>
@@ -34,7 +37,7 @@
     </view>
   </view>
   <view class="success" hidden="{{!confirmed}}">
-    厨房正在火热制作中。。。
+    美味马上就来。。。
   </view>
   <view class="successNextStep" hidden="{{!confirmed}}">
     <view class="returnButton" bindtap="returnToOrder">

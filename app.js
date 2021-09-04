@@ -32,8 +32,17 @@ App({
         }
       }
     })
+
+    wx.getStorage({
+      key: 'history'
+    })
+      .then(
+        (success) => {},
+        (fail) => wx.setStorageSync('history', new Array())
+      )
   },
   globalData: {
-    userInfo: null
-  }
+    userInfo: null,
+  },
 })
+

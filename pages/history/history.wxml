@@ -1,4 +1,4 @@
-<view>
+<view class="whole">
   <view class="titleBar">
     <view class="orderState {{activeState==='all'?'active':''}}" bindtap="toAll">全部</view>
     <view class="orderState {{activeState==='cooking'?'active':''}}" bindtap="toCooking">制作中</view>
@@ -6,39 +6,54 @@
     <view class="orderState {{activeState==='finished'?'active':''}}" bindtap="toFinished">已完成</view>
   </view>
   <view class="historyOrders">
-    <view wx:for="{{historyOrders}}" class="singleOrder" hidden="{{activeState!=='all'}}">
-      <view class="tableNumber"></view>
-      <view class="pics"></view>
-      <view class="test">
-        {{activeState}}
-      </view>
-      <view class="orderTime">
-        {{item.time.year}}
-        {{item.time.month}}
-        {{item.time.date}}
-        {{item.time.hour}}
-        {{item.time.minute}}
-        {{item.time.second}}
-      </view>
-      <view class="orderFinished">
-        {{item.finished}}
-      </view>
-      <view class="orderCooking">
-        {{item.cooking}}
-      </view>
+    <scroll-view>
+      <view wx:for="{{displayLists}}" class="singleOrder" hidden="{{activeState!==item.state&&activeState!=='all'}}"
+        wx:for-item="order">
+        <view class="orderTime">
+          {{order.time}}
+        </view>
 
-      <view class="orderDetail">
-        {{item.totalPrice}}
-        {{item.totalAmount}}
+        <view class="orderDetail">
+          <view class="pics">
+            <view class="monoPic" wx:if="{{order.displayList.length===1}}">
+              <view>
+                <image mode="widthFix" src="{{order.displayList[0]['image-url']}}"></image>
+              </view>
+              <view>
+                <view>{{order.displayList[0].name}}</view>
+              </view>
+            </view>
+            <view class="multiPic" wx:if="{{order.displayList.length>1}}">
+              <view class="dish" wx:for="{{order.displayList}}">
+                <image mode="widthFix" src="{{item['image-url']}}"></image>
+                <view class="dishName">
+                  {{item.name}}
+                </view>
+              </view>
+              <view class="abbr" wx:if="{{order.exceed}}">…</view>
+            </view>
+          </view>
+          <view>
+            <view class="price">
+              <text>￥</text>{{order.totalPrice}}
+            </view>
+            <view class="amount">
+              共{{order.totalAmount}}件
+            </view>
+          </view>
+        </view>
+        <view class="nextStep">
+          <view class="orderFinished" data-id="{{order.time}}" hidden="{{order.state !== 'cooking'}}" bindtap="cooked">
+            模拟后台完成制作
+          </view>
+          <view class="orderUnpaid" data-id="{{order.time}}" hidden="{{order.state !== 'unpaid'}}" bindtap="paid">
+            模拟支付
+          </view>
+          <view class="orderPaid" hidden="{{order.state !== 'finished'}}">
+            已经完成
+          </view>
+        </view>
       </view>
-    </view>
-  </view>
-
-  <view id="test">
-    <view wx:for="{{testData}}" hidden="{{item.number===1}}" class="test1">
-    good
-    <view>
-    {{item.number}}</view>
-    </view>
+    </scroll-view>
   </view>
 </view>

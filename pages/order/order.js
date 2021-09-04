@@ -295,7 +295,9 @@ Page({
         return {
           kindName: kind.kindName,
           kindId: kind.kindId,
-          dishes: kind.dishes.filter((dish) => dish.numbers > 0),
+          dishes: kind.dishes.filter((dish) => {
+            return dish.numbers > 0
+          }),
         }
       })
       .filter((kind) => Object.keys(kind.dishes).length !== 0)
