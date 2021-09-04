@@ -28,20 +28,20 @@ page {
   flex: 1 1 auto;
   overflow: auto;
 }
-.orderArea .catagories {
+.catagories {
   display: flex;
   width: 200rpx;
   flex-direction: column;
   background-color: #a9e7e9;
   font-size: 30rpx;
 }
-.orderArea .catagories .catagory.active {
+.catagories .catagory.active {
   background-color: white;
   border-left: #9abdff solid 10rpx;
   border-right: transparent solid 10rpx;
   box-sizing: border-box;
 }
-.orderArea .catagories .catagory {
+.catagories .catagory {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,41 +62,41 @@ page {
   height: 240rpx;
   font-size: 36rpx;
 }
-.dishAll .dishPic {
+.dishPic {
   display: flex;
   width: 200rpx;
   box-sizing: border-box;
   padding: 10rpx 10rpx 0rpx 20rpx;
 }
-.dishAll .dishPic .pic {
+.dishPic .pic {
   border-radius: 10rpx;
 }
-.dishAll .dishInfo {
+.dishInfo {
   width: 330rpx;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   padding: 0rpx 10rpx 0rpx 10rpx;
 }
-.dishAll .dishInfo .dishName {
+.dishInfo .dishName {
   flex: 2;
 }
-.dishAll .dishInfo .dishSales {
+.dishInfo .dishSales {
   font-size: 30rpx;
   flex: 4;
 }
-.dishAll .dishInfo .dishPayment {
+.dishInfo .dishPayment {
   flex: 3;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.dishAll .dishInfo .dishPayment .dishCounter {
+.dishInfo .dishPayment .dishCounter {
   display: flex;
 }
-.dishAll .dishInfo .dishPayment .dishCounter .dishMinus,
-.dishAll .dishInfo .dishPayment .dishCounter .dishPlus,
-.dishAll .dishInfo .dishPayment .dishCounter .dishServes {
+.dishInfo .dishPayment .dishCounter .dishMinus,
+.dishInfo .dishPayment .dishCounter .dishPlus,
+.dishInfo .dishPayment .dishCounter .dishServes {
   display: flex;
   width: 40rpx;
   justify-content: center;
@@ -126,7 +126,11 @@ page {
   transform: translate(0, 100%);
   /* overflow: auto; */
 }
-.checkout .cartDetail .titleBar {
+.checkout .cartDetail.show {
+  transform: translate(0, 0);
+  transition: 0.2s cubic-bezier(0.07, 0.92, 0.4, 0.97);
+}
+.titleBar {
   font-size: 40rpx;
   padding: 20rpx 20rpx 10rpx 20rpx;
   height: 60rpx;
@@ -135,20 +139,20 @@ page {
   justify-content: space-between;
   align-items: center;
 }
-.checkout .cartDetail .titleBar .clearAll {
+.titleBar .clearAll {
   display: flex;
 }
-.checkout .cartDetail .titleBar .clearAll .detailClear {
+.titleBar .clearAll .detailClear {
   display: flex;
   width: 40rpx;
   align-items: center;
   padding: 5rpx 0rpx 0rpx 0rpx;
 }
-.checkout .cartDetail .orderedList {
+.orderedList {
   max-height: 50vh;
   overflow: auto;
 }
-.checkout .cartDetail .orderedList .detailDish {
+.orderedList .detailDish {
   display: flex;
   width: 750rpx;
   height: 180rpx;
@@ -156,65 +160,61 @@ page {
   padding: 0rpx 10rpx 0rpx 10rpx;
   box-sizing: border-box;
 }
-.checkout .cartDetail .orderedList .detailDish .detailDishPic {
+.orderedList .detailDish .detailDishPic {
   display: flex;
   width: 150rpx;
   box-sizing: border-box;
   padding: 10rpx 10rpx 0rpx 10rpx;
 }
-.checkout .cartDetail .orderedList .detailDish .detailDishPic .pic {
+.orderedList .detailDish .detailDishPic .pic {
   border-radius: 10rpx;
 }
-.checkout .cartDetail .orderedList .detailDish .detailDishInfo {
+.orderedList .detailDish .detailDishInfo {
   width: 550rpx;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   padding: 0rpx 10rpx 0rpx 10rpx;
 }
-.checkout .cartDetail .orderedList .detailDish .detailDishInfo .detailDishName {
+.orderedList .detailDish .detailDishInfo .detailDishName {
   flex: 2;
 }
-.checkout .cartDetail .orderedList .detailDish .detailDishInfo .detailDishPayment {
+.orderedList .detailDish .detailDishInfo .detailDishPayment {
   flex: 3;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.checkout .cartDetail .orderedList .detailDish .detailDishInfo .detailDishPayment .detailDishCounter {
+.orderedList .detailDish .detailDishInfo .detailDishPayment .detailDishCounter {
   display: flex;
 }
-.checkout .cartDetail .orderedList .detailDish .detailDishInfo .detailDishPayment .detailDishCounter .detailDishMinus,
-.checkout .cartDetail .orderedList .detailDish .detailDishInfo .detailDishPayment .detailDishCounter .detailDishPlus,
-.checkout .cartDetail .orderedList .detailDish .detailDishInfo .detailDishPayment .detailDishCounter .detailDishServes {
+.orderedList .detailDish .detailDishInfo .detailDishPayment .detailDishCounter .detailDishMinus,
+.orderedList .detailDish .detailDishInfo .detailDishPayment .detailDishCounter .detailDishPlus,
+.orderedList .detailDish .detailDishInfo .detailDishPayment .detailDishCounter .detailDishServes {
   display: flex;
   width: 40rpx;
   justify-content: center;
   align-items: center;
 }
-.checkout .cartDetail.show {
-  transform: translate(0, 0);
-  transition: 0.2s cubic-bezier(0.07, 0.92, 0.4, 0.97);
-}
-.checkout .checkoutBasic {
+.checkoutBasic {
   display: flex;
   align-items: center;
   width: 100%;
   z-index: 8;
   background-color: white;
 }
-.checkout .checkoutBasic .shoppingCart {
+.checkoutBasic .shoppingCart {
   flex: 1;
   display: flex;
   position: relative;
   width: 200rpx;
 }
-.checkout .checkoutBasic .shoppingCart .cartIcon {
+.checkoutBasic .shoppingCart .cartIcon {
   display: flex;
   width: 200rpx;
   transform: translate(-15rpx, -10rpx) scale(0.85);
 }
-.checkout .checkoutBasic .shoppingCart .cartRedDot {
+.checkoutBasic .shoppingCart .cartRedDot {
   display: flex;
   height: 50rpx;
   min-width: 50rpx;
@@ -226,15 +226,15 @@ page {
   color: white;
   transform: translate(-65rpx, 30rpx);
 }
-.checkout .checkoutBasic .totalPrice {
+.checkoutBasic .totalPrice {
   flex: 2;
 }
-.checkout .checkoutBasic .goToPay {
+.checkoutBasic .goToPay {
   flex: 1;
   padding: 10rpx;
   height: 80rpx;
 }
-.checkout .checkoutBasic .goToPay .payButton {
+.checkoutBasic .goToPay .payButton {
   width: 100%;
   height: 100%;
   background-color: #6e9ffa;

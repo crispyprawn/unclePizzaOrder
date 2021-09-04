@@ -5,7 +5,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    activeState: 'all'
+    activeState: 'all',
+    hidden: true,
+    testData: [
+      {
+        number: 1,
+      },
+      {
+        number: 0
+      }
+    ]
   },
 
   toAll(e) {
@@ -16,18 +25,21 @@ Page({
 
   toUnpaid(e) {
     this.setData({
-      activeState: 'unpaid'
+      activeState: 'unpaid',
+      hidden: false
     })
   },
-  toUncommented(e) {
+  toCooking(e) {
     this.setData({
-      activeState: 'uncommented'
+      activeState: 'cooking',
+      hidden: true
     })
   },
-  toFulfilled(e) {
+  toFinished(e) {
     this.setData({
-      activeState: 'fulfilled'
+      activeState: 'finished'
     })
+    console.log(this.data.hidden)
   },
 
   /**

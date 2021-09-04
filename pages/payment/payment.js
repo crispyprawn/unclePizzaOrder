@@ -20,14 +20,13 @@ Page({
     })
     this.getOpenerEventChannel().emit("initialize")
     let history = wx.getStorageSync('history')
-    // console.log(history.length)
     if (history.length === 0) {
       history = new Array()
     }
     history.push({
       time: Date.now(),
-      fulfilled: false,
-      commented: false,
+      finished: false,
+      cooking: true,
       detail: this.data.menu,
       totalAmount: this.data.totalAmount,
       totalPrice: this.data.totalPrice

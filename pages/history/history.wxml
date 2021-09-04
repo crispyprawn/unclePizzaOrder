@@ -1,12 +1,17 @@
 <view>
   <view class="titleBar">
     <view class="orderState {{activeState==='all'?'active':''}}" bindtap="toAll">全部</view>
+    <view class="orderState {{activeState==='cooking'?'active':''}}" bindtap="toCooking">制作中</view>
     <view class="orderState {{activeState==='unpaid'?'active':''}}" bindtap="toUnpaid">待支付</view>
-    <view class="orderState {{activeState==='uncommented'?'active':''}}" bindtap="toUncommented">待评价</view>
-    <view class="orderState {{activeState==='fulfilled'?'active':''}}" bindtap="toFulfilled">已完成</view>
+    <view class="orderState {{activeState==='finished'?'active':''}}" bindtap="toFinished">已完成</view>
   </view>
   <view class="historyOrders">
-    <view wx:for="{{historyOrders}}" class="singleOrder">
+    <view wx:for="{{historyOrders}}" class="singleOrder" hidden="{{activeState!=='all'}}">
+      <view class="tableNumber"></view>
+      <view class="pics"></view>
+      <view class="test">
+        {{activeState}}
+      </view>
       <view class="orderTime">
         {{item.time.year}}
         {{item.time.month}}
@@ -15,19 +20,25 @@
         {{item.time.minute}}
         {{item.time.second}}
       </view>
-      <view class="orderFulfilled">
-        {{item.fulfilled}}
+      <view class="orderFinished">
+        {{item.finished}}
       </view>
-      <view class="orderCommented">
-        {{item.commented}}
+      <view class="orderCooking">
+        {{item.cooking}}
       </view>
+
       <view class="orderDetail">
-        {{item.totalAmount}}
         {{item.totalPrice}}
-        <!-- <view class="orderMenu" wx:for="{{item.detail}}" wx:for-item="kind">
-          {{kind}}
-        </view> -->
+        {{item.totalAmount}}
       </view>
+    </view>
+  </view>
+
+  <view id="test">
+    <view wx:for="{{testData}}" hidden="{{item.number===1}}" class="test1">
+    good
+    <view>
+    {{item.number}}</view>
     </view>
   </view>
 </view>
