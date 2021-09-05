@@ -52,6 +52,16 @@ Page({
     wx.setStorageSync('history', this.data.historyOrders)
   },
 
+  finished(e) {
+    this.data.historyOrders.forEach((order) => {
+      if (order.time === e.currentTarget.dataset.id)
+        order.state = 'cooking'
+    })
+    this.setData({
+      historyOrders: this.data.historyOrders
+    })
+    wx.setStorageSync('history', this.data.historyOrders)
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -73,8 +83,7 @@ Page({
     this.setData({
       historyOrders: wx.getStorageSync('history')
     })
-    console.log(wx.getStorageSync('history'))
-    let displayLists = this.data.historyOrders.map((order) => {
+    this.data.historyOrders.forEach((order) => {
       let displayList = new Array()
       let limit = 4
       let exceed = false
@@ -89,15 +98,12 @@ Page({
           }
         })
       })
-      console.log(exceed)
       order.displayList = displayList
       order.exceed = exceed
-      return order
     })
     this.setData({
-      displayLists: displayLists
+      historyOrders:this.data.historyOrders
     })
-    console.log(this.data.displayLists)
   },
 
   /**

@@ -7,8 +7,26 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+
+  <view class="options">
+    <view class="book">
+      <image mode="aspectFit" src="/static/images/icon/book.png"></image>
+      <view>
+        电话预定
+      </view>
+    </view>
+    <view class="points">
+      <image mode="aspectFit" src="/static/images/icon/points.png"></image>
+      <view>
+        用户积分
+      </view>
+    </view>
+    <view class="suggestion">
+      <image mode="aspectFit" src="/static/images/icon/suggestion.png"></image>
+      <view>
+        评价建议
+      </view>
+    </view>
   </view>
-  <view>hello</view>
+
 </view>

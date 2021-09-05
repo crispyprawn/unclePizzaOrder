@@ -7,7 +7,7 @@
   </view>
   <view class="historyOrders">
     <scroll-view>
-      <view wx:for="{{displayLists}}" class="singleOrder" hidden="{{activeState!==item.state&&activeState!=='all'}}"
+      <view wx:for="{{historyOrders}}" class="singleOrder" hidden="{{activeState!==order.state&&activeState!=='all'}}"
         wx:for-item="order">
         <view class="orderTime">
           {{order.time}}
@@ -43,13 +43,16 @@
           </view>
         </view>
         <view class="nextStep">
-          <view class="orderFinished" data-id="{{order.time}}" hidden="{{order.state !== 'cooking'}}" bindtap="cooked">
+          <view class="next orderFinished" data-id="{{order.time}}" data-state="{{order.state}}"
+            hidden="{{order.state !== 'cooking'}}" bindtap="cooked">
             模拟后台完成制作
           </view>
-          <view class="orderUnpaid" data-id="{{order.time}}" hidden="{{order.state !== 'unpaid'}}" bindtap="paid">
+          <view class="next orderUnpaid" data-id="{{order.time}}" data-state="{{order.state}}"
+            hidden="{{order.state !== 'unpaid'}}" bindtap="paid">
             模拟支付
           </view>
-          <view class="orderPaid" hidden="{{order.state !== 'finished'}}">
+          <view class="next orderPaid" data-id="{{order.time}}" data-state="{{order.state}}"
+            hidden="{{order.state !== 'finished'}}" bindtap="finished">
             已经完成
           </view>
         </view>

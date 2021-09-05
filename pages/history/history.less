@@ -73,9 +73,15 @@ page {
     display: flex;
     justify-content: flex-end;
 
+    .next{
+      border-radius: 20rpx;
+      height: 60rpx;
+      line-height: 60rpx;
+      padding: 0rpx 10rpx 0rpx 10rpx;
+    }
+
     .orderFinished {
-      background-color: aquamarine;
-      height: 100%;
+      background-color: rgb(156, 255, 222);
     }
 
     .orderUnpaid {
@@ -106,13 +112,12 @@ page {
 }
 
 .multiPic {
-
   display: flex;
   align-items: flex-start;
   font-size: 45rpx;
 
   .dish {
-    padding-right: 15rpx;
+    padding: 20rpx 15rpx 0rpx 0rpx;
     width: 130rpx;
 
     image {
@@ -128,7 +133,7 @@ page {
     }
   }
 
-  .abbr{
+  .abbr {
     align-self: center;
   }
 }

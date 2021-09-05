@@ -1,7 +1,6 @@
 {
   "pages": [
     "pages/order/order",
-    "pages/account/account",
     "pages/history/history",
     "pages/index/index",
     "pages/logs/logs",
@@ -31,7 +30,7 @@
         "selectedIconPath": "/static/images/tabs/history-selected.png"
       },
       {
-        "pagePath": "pages/account/account",
+        "pagePath": "pages/index/index",
         "text": "我",
         "iconPath": "/static/images/tabs/home.png",
         "selectedIconPath": "/static/images/tabs/home-selected.png"

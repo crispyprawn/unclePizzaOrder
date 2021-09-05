@@ -1,4 +1,5 @@
 /**index.wxss**/
+
 .userinfo {
   display: flex;
   flex-direction: column;
@@ -18,4 +19,30 @@
 
 .usermotto {
   margin-top: 200px;
+}
+
+.options {
+  display: flex;
+  justify-content: space-around;
+  height: 300rpx;
+  width: 100%;
+  padding: 50rpx;
+  position: fixed;
+  bottom: 0;
+  box-sizing: border-box;
+}
+
+.book,
+.suggestion,
+.points {
+  flex: 1;
+  height: 80rpx;
+  padding: 30rpx;
+  font-size: 35rpx;
+  text-align: center;
+}
+
+image {
+  height: 100%;
+  width: 100%;
 }
